@@ -8,7 +8,7 @@
   --secondary-color-100: #f0f0f1;
 
   --background-color-primary: #f5f5f5;
-  --background-color-form: white;
+  --background-color-light: rgba(255, 255, 255, 0.95);;
   --text-color: #000;
   --text-color-secondary: #6e6e6e;
 
@@ -19,11 +19,14 @@
   font-family: 'Source Han Sans SC';
   font-style: normal;
   font-weight: 400;
+  --content-safe-padding-x: 50px;
+  --content-safe-padding-y:35px;
 }
 
 body {
   margin: 0;
   padding: 0;
+  background-color: var(--background-color-primary);
 }
 
 #app {
