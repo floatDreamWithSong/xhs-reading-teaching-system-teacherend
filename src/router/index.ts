@@ -6,6 +6,18 @@ const routes: RouteRecordRaw[] = [
     path: '/',
     name: 'Home',
     component: () => import('../views/HomePage.vue'),
+    children: [
+      {
+        path: '',
+        name: 'HomeContent',
+        component: () => import('../views/HomeContent.vue'),
+      },
+      {
+        path: 'create-class',
+        name: 'CreateClass',
+        component: () => import('../views/CreateClassPage.vue'),
+      }
+    ]
   },
   {
     path: '/bank',

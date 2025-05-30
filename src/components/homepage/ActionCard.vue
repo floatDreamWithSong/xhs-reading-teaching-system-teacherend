@@ -1,13 +1,21 @@
 <script setup lang="ts">
+import { useRouter } from 'vue-router'
+
 interface Props {
   imageSrc: string
   text: string
+  url: string
 }
 
-defineProps<Props>()
+const props = defineProps<Props>()
+const router = useRouter()
+
+const handleClick = () => {
+  router.push(props.url)
+}
 </script>
 <template>
-  <div class="action-card">
+  <div class="action-card" @click="handleClick">
     <div class="image-container">
       <img :src="imageSrc" :alt="text" class="card-image" />
     </div>
