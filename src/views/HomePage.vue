@@ -1,7 +1,24 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+import ActionCard from '@/components/homepage/ActionCard.vue';
 
 const teacherName = ref('林霁')
+
+// 卡片数据
+const cardData = [
+  {
+    imageSrc: '/homework.png',
+    text: '布置作业'
+  },
+  {
+    imageSrc: '/manage-class.png', 
+    text: '班级管理'
+  },
+  {
+    imageSrc: '/create-class.png',
+    text: '创建班级'
+  }
+]
 </script>
 
 <template>
@@ -9,10 +26,17 @@ const teacherName = ref('林霁')
     <div class="home-header">
       {{ teacherName }}老师，欢迎使用小花狮阅读教学系统
     </div>
+    <div class="card-list">
+      <ActionCard
+        v-for="(card, index) in cardData"
+        :key="index"
+        :image-src="card.imageSrc"
+        :text="card.text"
+      />
+    </div>
     <Teleport to=".content-container">
       <img id="background" src="/background.png" />
     </Teleport>
-
   </div>
 </template>
 
@@ -29,6 +53,19 @@ const teacherName = ref('林霁')
     font-size: 22px;
     line-height: 2rem;
     letter-spacing: -0.06em;
+  }
+
+  .card-list {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 32px;
+    margin: 2rem 0px;
+  }
+
+  .card-list :deep(.action-card) {
+    flex: 1;
+    min-width: 274px;
   }
 }
 
