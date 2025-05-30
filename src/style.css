@@ -19,11 +19,14 @@
   font-family: 'Source Han Sans SC';
   font-style: normal;
   font-weight: 400;
+  --content-safe-padding-x: 50px;
+  --content-safe-padding-y:35px;
 }
 
 body {
   margin: 0;
   padding: 0;
+  background-color: var(--background-color-primary);
 }
 
 #app {
