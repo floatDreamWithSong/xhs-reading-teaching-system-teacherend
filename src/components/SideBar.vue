@@ -16,6 +16,11 @@ const menuItems = [
 
 // 判断是否为当前路由
 function isActive(path: string) {
+  if (path === '/') {
+    // 对于首页，检查当前路由是否匹配首页路由（包括子路由）
+    return route.matched.some(record => record.path === '/')
+  }
+  // 对于其他路由，使用精确匹配
   return route.path === path
 }
 
