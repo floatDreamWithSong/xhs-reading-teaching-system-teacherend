@@ -57,13 +57,14 @@ function handleLogout() {
 .sidebar-container {
   width: 100%;
   height: 100%;
-  background: linear-gradient(to top, #8fa2ff4d, #f3f5fa4d);
+  background: linear-gradient(360deg, rgba(143, 162, 255, 0.3) 0%, rgba(243, 245, 250, 0.3) 92.31%);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
   .sidebar-list-container {
     width: 100%;
+    margin-top: 22px;
 
     .sidebar-list-item {
       width: 100%;

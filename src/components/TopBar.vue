@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Avatar, Xhs } from './icons'
+import { Avatar, Xhs, Down } from './icons'
 </script>
 
 <template>
@@ -10,15 +10,17 @@ import { Avatar, Xhs } from './icons'
         <span>小花狮阅读教学系统</span>
       </div>
       <div class="topbar-right-container">
-        <button class="topbar-language-button">简体中文</button>
+        <button class="topbar-language-button">
+          <span class="topbar-language-button-text">
+            中文简体
+          </span>
+        </button>
         <div class="topbar-right-container-item">
           <Avatar />
           <span>用户名</span>
           <div class="dropdown-wrapper">
             <button class="option" aria-haspopup="true" aria-expanded="false">
-              <svg width="11" height="7" viewBox="0 0 11 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M10 1L5.5 6L1 1" stroke="white" />
-              </svg>
+              <Down style="stroke: white;" />
             </button>
             <div class="dropdown-menu" role="menu">
               <a href="#" role="menuitem">个人中心</a>
@@ -73,19 +75,28 @@ import { Avatar, Xhs } from './icons'
 
 .topbar-language-button {
   background: white;
-  color: var(--primary-color);
   border: none;
-  padding: 6px 12px;
-  border-radius: 4px;
+  padding: 6px 1.5rem;
+  border-radius: 100px;
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.05), inset 0px 4px 4px rgba(255, 255, 255, 0.5);
   cursor: pointer;
   font-size: 14px;
+
+  .topbar-language-button-text {
+    font-weight: 500;
+    background: linear-gradient(360deg, #2447F9 18.27%, #7289FE 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
 }
 
 .topbar-right-container-item {
   display: flex;
   align-items: center;
   gap: 10px;
-  position: relative; /* 关键：提供绝对定位上下文 */
+  position: relative;
+  /* 关键：提供绝对定位上下文 */
   color: white;
 }
 
