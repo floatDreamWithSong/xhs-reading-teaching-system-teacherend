@@ -7,5 +7,9 @@ import Homework from './Homework.vue'
 import People from './People.vue'
 import Setting from './Setting.vue'
 import Xhs from './Xhs.vue'
+import Search from './Search.vue'
+import Down from './Down.vue'
+import Phone from './Phone.vue'
+import AddPeople from './AddPeople.vue'
 
-export { Avatar, Data, Exit, Folder, Home, Homework, People, Setting, Xhs }
+export { Avatar, Data, Exit, Folder, Home, Homework, People, Setting, Xhs, Search, Down, Phone, AddPeople }

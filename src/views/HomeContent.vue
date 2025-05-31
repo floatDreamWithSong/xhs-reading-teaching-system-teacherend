@@ -104,7 +104,6 @@ const handleViewHomeworkDetails = (id: string) => {
 <style scoped>
 .home-content {
   width: 100%;
-  background-color: var(--background-color-primary);
   position: relative;
   z-index: 1;
   
@@ -127,7 +126,7 @@ const handleViewHomeworkDetails = (id: string) => {
 
     &:deep(.action-card) {
       flex: 1;
-      min-width: 274px;
+      min-width: 200px;
     }
   }
 

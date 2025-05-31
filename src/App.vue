@@ -55,6 +55,8 @@ import TopBar from '@/components/TopBar.vue'
   overflow-y: auto;
   height: 100%;
   scrollbar-width: none;
+  min-width: 870px;
+  position: relative;
 }
 
 .content-safe-area-wrapper {
