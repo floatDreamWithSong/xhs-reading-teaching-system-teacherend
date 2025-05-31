@@ -69,7 +69,7 @@ const handleViewHomeworkDetails = (id: string) => {
 
 <template>
   <div class="home-content">
-    <div class="home-header">
+    <div class="content-header">
       {{ teacherName }}老师，欢迎使用小花狮阅读教学系统
     </div>
     <div class="card-list">
@@ -106,16 +106,6 @@ const handleViewHomeworkDetails = (id: string) => {
   width: 100%;
   position: relative;
   z-index: 1;
-  
-  .home-header {
-    width: 100%;
-    height: fit-content;
-    color: var(--text-color);
-    font-weight: 500;
-    font-size: 22px;
-    line-height: 2rem;
-    letter-spacing: -0.06em;
-  }
 
   .card-list {
     display: flex;
@@ -163,7 +153,7 @@ const handleViewHomeworkDetails = (id: string) => {
 }
 
 #background {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   right: 0;
   width: 55%;
