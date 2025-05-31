@@ -2,7 +2,9 @@
 </script>
 
 <template>
-  <div>
-    Bank
+  <div class="content-header">
+    题库管理
   </div>
 </template>
+<style scoped>
+</style>

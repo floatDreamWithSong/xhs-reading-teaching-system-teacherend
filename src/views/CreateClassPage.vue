@@ -132,9 +132,6 @@ const handleCreateClass = () => {
 }
 
 .card-area {
-  background: rgba(255, 255, 255, 0.95);
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.09);
-  border-radius: 8px;
   padding: 20px 60px;
 }
 
