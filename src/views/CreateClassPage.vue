@@ -6,6 +6,7 @@ import YesNoRadio from '@/components/common/YesNoRadio.vue'
 import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { AddPeople, Phone } from '@/components/icons'
+import BigButton from '@/components/common/BigButton.vue'
 const router = useRouter()
 
 // 表单数据
@@ -103,11 +104,7 @@ const handleCreateClass = () => {
         </div>
 
         <!-- 创建按钮 -->
-        <div class="button-container">
-          <button @click="handleCreateClass" class="create-button">
-            创建班级
-          </button>
-        </div>
+        <BigButton @click="handleCreateClass" text="创建班级" />
     </div>
 </template>
 
@@ -124,7 +121,6 @@ const handleCreateClass = () => {
     font-size: 17px;
     cursor: pointer;
     line-height: 26px;
-    /* identical to box height */
     text-align: right;
     letter-spacing: 0.01em;
     color: var(--primary-color);
@@ -132,17 +128,17 @@ const handleCreateClass = () => {
 }
 
 .card-area {
-  background: rgba(255, 255, 255, 0.95);
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.09);
-  border-radius: 8px;
   padding: 20px 60px;
 }
 
 .service-section {
   margin-top: 25px;
-  .service-title{
+
+  .service-title {
     margin-bottom: 9px;
   }
+
+  margin-bottom: 44px;
 }
 
 .class-info-section {
@@ -217,23 +213,6 @@ const handleCreateClass = () => {
   grid-template-columns: 1fr;
   gap: 10px;
   align-items: start;
-}
-
-.button-container {
-  width: 100%;
-  margin-top: 44px;
-
-  .create-button {
-    display: block;
-    margin: auto;
-    box-shadow: 0px 2px 3.6px rgba(0, 0, 0, 0.05);
-    border-radius: 10px;
-    width: 240px;
-    height: 45px;
-    font-size: 16px;
-    letter-spacing: 0.3em;
-    text-align: center;
-  }
 }
 
 h3 {

@@ -11,5 +11,12 @@ import Search from './Search.vue'
 import Down from './Down.vue'
 import Phone from './Phone.vue'
 import AddPeople from './AddPeople.vue'
+import Star from './Star.vue'
+import Student from './Student.vue'
+import Edit from './Edit.vue'
+import Delete from './Delete.vue'
 
-export { Avatar, Data, Exit, Folder, Home, Homework, People, Setting, Xhs, Search, Down, Phone, AddPeople }
+export {
+  Avatar, Data, Exit, Folder, Home, Homework, People, Setting,
+  Xhs, Search, Down, Phone, AddPeople, Star, Delete, Edit, Student
+}
