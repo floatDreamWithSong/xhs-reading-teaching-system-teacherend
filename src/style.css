@@ -8,7 +8,8 @@
   --secondary-color-100: #f0f0f1;
 
   --background-color-primary: #fefefe;
-  --background-color-light: rgba(255, 255, 255, 0.95);;
+  --background-color-light: rgba(255, 255, 255, 0.95);
+  ;
   --text-color: #000;
   --text-color-secondary: #6e6e6e;
 
@@ -20,10 +21,11 @@
   font-style: normal;
   font-weight: 400;
   --content-safe-padding-x: 50px;
-  --content-safe-padding-y:35px;
+  --content-safe-padding-y: 35px;
   --form-item-linear-gradient:
     linear-gradient(#fff, #fff) padding-box,
     linear-gradient(to left, var(--primary-color) 0%, var(--primary-color-300) 100%) border-box;
+  --content-min-width: 870px;
 }
 
 body {
@@ -36,6 +38,7 @@ body {
   height: 100vh;
   width: 100vw;
 }
+
 /* 按钮默认样式 */
 button {
   border: none;
@@ -46,4 +49,15 @@ button {
   font-size: 15px;
   font-weight: 400;
   color: white;
+}
+
+/* 内容路由页面的头部标题样式 */
+.content-header {
+  width: 100%;
+  height: fit-content;
+  color: var(--text-color);
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 2rem;
+  letter-spacing: -0.06em;
 }
