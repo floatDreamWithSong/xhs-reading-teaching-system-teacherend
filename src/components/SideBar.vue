@@ -4,7 +4,6 @@ import { Data, Exit, Folder, Home, Homework, People, Setting } from './icons'
 
 const route = useRoute()
 
-// 侧边栏菜单项配置
 const menuItems = [
   { name: 'Home', path: '/', icon: Home, label: '首页' },
   { name: 'Bank', path: '/bank', icon: Folder, label: '题库管理' },
@@ -14,13 +13,10 @@ const menuItems = [
   { name: 'Settings', path: '/settings', icon: Setting, label: '系统设置' },
 ]
 
-// 判断是否为当前路由
 function isActive(path: string) {
-  if (path === '/') {
-    // 对于首页，检查当前路由是否匹配首页路由（包括子路由）
-    return route.matched.some(record => record.path === '/')
+  if (path === '/class') {
+    return route.matched.some(record => record.path === '/class')
   }
-  // 对于其他路由，使用精确匹配
   return route.path === path
 }
 
@@ -34,10 +30,8 @@ function handleLogout() {
 <template>
   <div class="sidebar-container">
     <div class="sidebar-list-container">
-      <router-link
-        v-for="item in menuItems" :key="item.name" :to="item.path" class="sidebar-list-item"
-        :class="{ 'selected-item': isActive(item.path) }"
-      >
+      <router-link v-for="item in menuItems" :key="item.name" :to="item.path" class="sidebar-list-item"
+        :class="{ 'selected-item': isActive(item.path) }">
         <component :is="item.icon" />
         <span>{{ item.label }}</span>
       </router-link>
@@ -72,9 +66,11 @@ function handleLogout() {
       align-items: center;
       justify-content: center;
       border-radius: 5px;
+
       span {
         width: 4rem;
       }
+
       text-decoration: none;
       height: 57px;
       transition: all 0.3s ease;
