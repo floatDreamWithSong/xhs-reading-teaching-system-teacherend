@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <div>
-    设置
+  <div class="content-header">
+    系统设置
   </div>
 </template>
