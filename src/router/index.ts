@@ -6,18 +6,6 @@ const routes: RouteRecordRaw[] = [
     path: '/',
     name: 'Home',
     component: () => import('../views/HomePage.vue'),
-    children: [
-      {
-        path: '',
-        name: 'HomeContent',
-        component: () => import('../views/HomeContent.vue'),
-      },
-      {
-        path: 'create-class',
-        name: 'CreateClass',
-        component: () => import('../views/CreateClassPage.vue'),
-      }
-    ]
   },
   {
     path: '/bank',
@@ -33,6 +21,17 @@ const routes: RouteRecordRaw[] = [
     path: '/class',
     name: 'Class',
     component: () => import('../views/ClassPage.vue'),
+    children: [
+
+      {
+        path: '',
+        name: 'HomeContent',
+        component: () => import('../views/ClassContent.vue'),
+      }, {
+        path: 'create-class',
+        name: 'CreateClass',
+        component: () => import('../views/CreateClassPage.vue'),
+      }]
   },
   {
     path: '/data',

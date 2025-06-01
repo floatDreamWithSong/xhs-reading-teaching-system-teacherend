@@ -26,6 +26,8 @@
     linear-gradient(#fff, #fff) padding-box,
     linear-gradient(to left, var(--primary-color) 0%, var(--primary-color-300) 100%) border-box;
   --content-min-width: 870px;
+  --data-card-width: 232px;
+  --data-card-gap: 15px;
 }
 
 body {
