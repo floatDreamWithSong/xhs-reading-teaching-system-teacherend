@@ -39,26 +39,28 @@ const data = [
         <div class="card-left">
           <div class="card-title">{{ item.title }}</div>
           <div class="card-number">{{ item.number }}</div>
-          <div class="card-desc" :class="item.desc.endsWith('↓')?'decrease':''">{{ item.desc }}</div>
+          <div class="card-desc" :class="item.desc.endsWith('↓') ? 'decrease' : ''">{{ item.desc }}</div>
         </div>
         <div class="card-right">
           <img :src="item.img" alt="" />
         </div>
       </div>
     </div>
-    <div class="stat-graph-container">
-      <div class="stat-graph-item card-area" v-for="_ in 4">
-        <div class="stat-title">
-          统计图
+    <div class="width-w">
+      <div class="stat-graph-container">
+        <div class="stat-graph-item card-area" v-for="_ in 4">
+          <div class="stat-title">
+            统计图
+          </div>
         </div>
       </div>
+      <BigButton text="导出报告" />
     </div>
-    <BigButton text="导出报告" />
   </div>
 </template>
 <style scoped>
 .data-wrapper {
-  width: fit-content;
+  width: 100%;
 }
 
 .card-container {
@@ -70,7 +72,7 @@ const data = [
 
   .card-area {
     display: flex;
-    padding: 24px 22px;
+    padding: var(--data-card-padding);
     min-width: var(--data-card-width);
     gap: 25px;
 
@@ -100,7 +102,8 @@ const data = [
         line-height: 30px;
         color: var(--color);
       }
-      .card-desc.decrease{
+
+      .card-desc.decrease {
         --color: #DB0000;
       }
     }
@@ -115,15 +118,22 @@ const data = [
   }
 }
 
+.width-w{
+  width: 100%;
+  min-width: fit-content;
+}
+
 .stat-graph-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: var(--data-card-gap);
   margin-bottom: 59px;
+  width: 100%;
 
   .stat-graph-item {
-    min-width: calc(var(--data-card-width)*2+var(--data-card-gap));
-    padding: 13px 17px;
+    --graph-padding: 17px;
+    min-width: calc(var(--data-card-width) * 2 + var(--data-card-padding) * 4 + var(--data-card-gap) - var(--graph-padding)*2);
+    padding: var(--graph-padding);
     height: fit-content;
 
     .stat-title {
