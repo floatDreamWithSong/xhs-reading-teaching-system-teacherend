@@ -4,6 +4,7 @@ import * as teacherApis from './teacher'
 import * as classApis from './class'
 import * as homeworkApis from './homework'
 import * as bankApis from './bank'
+import type z from 'zod'
 
 // 业务请求封装
 export const api = {
@@ -126,10 +127,23 @@ const createAxiosInstance = (): AxiosInstance => {
 const httpClient = createAxiosInstance()
 
 // 基础请求方法
-export const request = async <T = any>(config: AxiosRequestConfig): Promise<T> => {
+export const request = async <T extends z.ZodSchema>(config: AxiosRequestConfig & { responseValidator?: T, dataValidator: z.ZodSchema }): Promise<z.infer<T>> => {
   try {
-    const response = await httpClient.request<ApiResponse<T>>(config)
-    return response.data.data
+    if (config.dataValidator) {
+      const result = config.dataValidator.safeParse(config.data)
+      if (!result.success) {
+        throw new Error(`请求${config.url}请求数据格式错误:${result.error.message}`)
+      }
+    }
+    const response = await httpClient.request<ApiResponse<z.infer<T>>>(config)
+    if (!config.responseValidator) {
+      return response.data.data
+    }
+    const result = config.responseValidator.safeParse(response.data.data)
+    if (!result.success) {
+      throw new Error(`请求${config.url}响应数据格式错误:${result.error.message}`)
+    }
+    return result
   } catch (error) {
     throw error instanceof Error ? error : new Error('未知错误')
   }
