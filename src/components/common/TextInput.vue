@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Label from './Label.vue'
+
 interface Props {
   label?: string
   placeholder?: string
@@ -17,22 +18,22 @@ interface Emits {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  type: 'text'
+  type: 'text',
 })
 
 const emit = defineEmits<Emits>()
 
-const handleInput = (event: Event) => {
+function handleInput(event: Event) {
   const target = event.target as HTMLInputElement
   emit('update:modelValue', target.value)
   emit('input', target.value)
 }
 
-const handleBlur = () => {
+function handleBlur() {
   emit('blur')
 }
 
-const handleFocus = () => {
+function handleFocus() {
   emit('focus')
 }
 </script>
@@ -41,10 +42,12 @@ const handleFocus = () => {
   <div class="text-input-container">
     <Label v-if="label" :label="label" :required="required" />
     <div class="input-wrapper">
-      <input :value="modelValue" :placeholder="placeholder" :disabled="disabled" :type="type" class="input-field"
-        :class="{ 'has-suffix': $slots.suffix }" @input="handleInput" @blur="handleBlur" @focus="handleFocus" />
+      <input
+        :value="modelValue" :placeholder="placeholder" :disabled="disabled" :type="type" class="input-field"
+        :class="{ 'has-suffix': $slots.suffix }" @input="handleInput" @blur="handleBlur" @focus="handleFocus"
+      >
       <div v-if="$slots.suffix" class="suffix-slot">
-        <slot name="suffix"></slot>
+        <slot name="suffix" />
       </div>
     </div>
   </div>

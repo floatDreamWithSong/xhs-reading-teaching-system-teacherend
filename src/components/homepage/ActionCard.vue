@@ -10,23 +10,23 @@ interface Props {
 const props = defineProps<Props>()
 const router = useRouter()
 
-const handleClick = () => {
+function handleClick() {
   router.push(props.url)
 }
 </script>
+
 <template>
   <div class="action-card" @click="handleClick">
     <div class="image-container">
-      <img :src="imageSrc" :alt="text" class="card-image" />
+      <img :src="imageSrc" :alt="text" class="card-image">
     </div>
     <span class="card-text">
       {{ text }}
     </span>
-    <div class="radial-background">
-
-    </div>
+    <div class="radial-background" />
   </div>
 </template>
+
 <style scoped>
 .action-card {
   display: flex;
@@ -68,11 +68,10 @@ const handleClick = () => {
     line-height: 26px;
     letter-spacing: -0.06em;
 
-    background: linear-gradient(360deg, #2447F9 26.92%, #8FA2FF 100%);
+    background: linear-gradient(360deg, #2447f9 26.92%, #8fa2ff 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-
   }
 
   .radial-background {

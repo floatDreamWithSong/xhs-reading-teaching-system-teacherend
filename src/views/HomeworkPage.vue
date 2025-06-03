@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import BigButton from '@/components/common/BigButton.vue';
-import PageTable from '@/components/common/PageTable.vue';
-import Select from '@/components/common/Select.vue';
-import TextInput from '@/components/common/TextInput.vue';
-import { Search } from '@/components/icons';
+import BigButton from '@/components/common/BigButton.vue'
+import PageTable from '@/components/common/PageTable.vue'
+import Select from '@/components/common/Select.vue'
+import TextInput from '@/components/common/TextInput.vue'
+import { Search } from '@/components/icons'
 
 const name = ['状态', '作业名称', '班级', '发布时间', '截止时间', '完成情况', '操作']
 
@@ -18,8 +18,8 @@ const homeworkData = [
     completion: {
       percentage: 85,
       completed: 34,
-      total: 40
-    }
+      total: 40,
+    },
   },
   {
     status: '进行中',
@@ -30,8 +30,8 @@ const homeworkData = [
     completion: {
       percentage: 85,
       completed: 34,
-      total: 40
-    }
+      total: 40,
+    },
   },
   {
     status: '进行中',
@@ -42,8 +42,8 @@ const homeworkData = [
     completion: {
       percentage: 85,
       completed: 34,
-      total: 40
-    }
+      total: 40,
+    },
   },
   {
     status: '已停止',
@@ -54,9 +54,9 @@ const homeworkData = [
     completion: {
       percentage: 85,
       completed: 34,
-      total: 40
-    }
-  }
+      total: 40,
+    },
+  },
 ]
 </script>
 
@@ -78,7 +78,9 @@ const homeworkData = [
       <PageTable :page="2" :page-size="4" :total="20">
         <template #header>
           <div class="header">
-            <div v-for="i in name" :key="i" class="header-item">{{ i }}</div>
+            <div v-for="i in name" :key="i" class="header-item">
+              {{ i }}
+            </div>
           </div>
         </template>
         <template #default>
@@ -88,14 +90,22 @@ const homeworkData = [
                 {{ item.status }}
               </span>
             </div>
-            <div class="data-item title">{{ item.title }}</div>
-            <div class="data-item class">{{ item.class }}</div>
-            <div class="data-item time">{{ item.publishTime }}</div>
-            <div class="data-item time">{{ item.endTime }}</div>
+            <div class="data-item title">
+              {{ item.title }}
+            </div>
+            <div class="data-item class">
+              {{ item.class }}
+            </div>
+            <div class="data-item time">
+              {{ item.publishTime }}
+            </div>
+            <div class="data-item time">
+              {{ item.endTime }}
+            </div>
             <div class="data-item completion">
               <div class="progress-container">
                 <div class="progress-bar">
-                  <div class="progress-fill" :style="{ width: item.completion.percentage + '%' }"></div>
+                  <div class="progress-fill" :style="{ width: `${item.completion.percentage}%` }" />
                 </div>
                 <span class="progress-text">{{ item.completion.percentage }}%({{ item.completion.completed }}/{{
                   item.completion.total }})</span>
@@ -112,8 +122,9 @@ const homeworkData = [
     <BigButton text="新建作业" />
   </div>
 </template>
+
 <style scoped>
-.min-width-wrapper{
+.min-width-wrapper {
   min-width: 860px;
 }
 .card-area.filter-options {
@@ -141,7 +152,7 @@ const homeworkData = [
   .data-row {
     display: grid;
     grid-template-columns: var(--grid-style);
-    border-bottom: 1px solid #EAEAEA;
+    border-bottom: 1px solid #eaeaea;
     min-height: 50px;
     align-items: center;
 
@@ -164,7 +175,7 @@ const homeworkData = [
         }
 
         .active-tag {
-          background: linear-gradient(90deg, #284AF9 0%, #7A91FE 100%);
+          background: linear-gradient(90deg, #284af9 0%, #7a91fe 100%);
         }
 
         .stopped-tag {
@@ -213,14 +224,14 @@ const homeworkData = [
           .progress-bar {
             width: 90%;
             height: 11px;
-            background-color: #E5E7EB;
+            background-color: #e5e7eb;
             border-radius: 30px;
             overflow: hidden;
 
             .progress-fill {
               height: 100%;
               border-radius: 30px;
-              background: linear-gradient(90deg, var(--primary-color) 0%, var(--primary-color-300) 100%);;
+              background: linear-gradient(90deg, var(--primary-color) 0%, var(--primary-color-300) 100%);
               transition: width 0.3s ease;
             }
           }
@@ -254,7 +265,7 @@ const homeworkData = [
     }
 
     &:hover {
-      background-color: #FAFAFA;
+      background-color: #fafafa;
     }
   }
 }

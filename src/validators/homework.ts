@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z } from 'zod'
 
 export const getLatestHomeworkRequestSchema = z.object({
   limit: z.number(),
@@ -17,7 +17,7 @@ export const getLatestHomeworkResponseSchema = z.object({
     studentCount: z.number(),
     completedCount: z.number(),
     uncompletedCount: z.number(),
-  }))
+  })),
 })
 
 export const getAllHomeworkRequestSchema = z.object({
@@ -39,5 +39,5 @@ export const getAllHomeworkResponseSchema = z.object({
     deadline: z.string(),
     studentCount: z.number(),
     completedCount: z.number(),
-  }))
+  })),
 })

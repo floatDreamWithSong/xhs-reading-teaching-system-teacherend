@@ -20,17 +20,17 @@ const props = withDefaults(defineProps<Props>(), {
   disabled: false,
   required: false,
   yesText: '是',
-  noText: '否'
+  noText: '否',
 })
 
 const emit = defineEmits<Emits>()
 
 const options = computed(() => [
   { value: true, label: props.yesText },
-  { value: false, label: props.noText }
+  { value: false, label: props.noText },
 ])
 
-const handleChange = (value: string | number | boolean) => {
+function handleChange(value: string | number | boolean) {
   const boolValue = value as boolean
   emit('update:modelValue', boolValue)
   emit('change', boolValue)
@@ -40,15 +40,15 @@ const handleChange = (value: string | number | boolean) => {
 <template>
   <RadioGroup
     :label="label"
-    :modelValue="modelValue"
+    :model-value="modelValue"
     :options="options"
     :disabled="disabled"
     :required="required"
-    @update:modelValue="handleChange"
+    @update:model-value="handleChange"
     @change="handleChange"
   >
     <template #prefix>
-      <slot name="prefix"></slot>
+      <slot name="prefix" />
     </template>
   </RadioGroup>
-</template> 
+</template>

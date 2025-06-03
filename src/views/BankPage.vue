@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import BigButton from '@/components/common/BigButton.vue';
-import PageTable from '@/components/common/PageTable.vue';
-import Select from '@/components/common/Select.vue';
-import TextInput from '@/components/common/TextInput.vue';
-import { Search, Star } from '@/components/icons';
+import BigButton from '@/components/common/BigButton.vue'
+import PageTable from '@/components/common/PageTable.vue'
+import Select from '@/components/common/Select.vue'
+import TextInput from '@/components/common/TextInput.vue'
+import { Search, Star } from '@/components/icons'
 
 const name = ['题型', '作业名称', '发布时间', '难度', '使用次数', '操作']
 
@@ -14,33 +14,33 @@ const questionData = [
     title: '分析《红楼梦》第一回中贾宝玉的形象特点',
     publishTime: '2025-5-21 17:03',
     difficulty: 3,
-    useCount: 25
+    useCount: 25,
   },
   {
     type: '预习',
     title: '预习《荷塘月色》，整理文中描写月亮的句子',
     publishTime: '2025-5-21 17:03',
     difficulty: 2,
-    useCount: 30
+    useCount: 30,
   },
   {
     type: '阅读',
     title: '分析《论语》中"仁"的含义及其现代意义',
     publishTime: '2025-5-21 17:03',
     difficulty: 4,
-    useCount: 21
+    useCount: 21,
   },
   {
     type: '预习',
     title: '预习《背影》，了解作者朱自清的生平',
     publishTime: '2025-5-20 17:03',
     difficulty: 2,
-    useCount: 55
-  }
+    useCount: 55,
+  },
 ]
 
 // 渲染星级难度
-const renderStars = (ind: number, difficulty: number) => {
+function renderStars(ind: number, difficulty: number) {
   if (ind > difficulty) {
     return '#e4e4e4'
   }
@@ -68,7 +68,9 @@ const renderStars = (ind: number, difficulty: number) => {
     <PageTable :page="2" :page-size="4" :total="20">
       <template #header>
         <div class="header">
-          <div v-for="i in name" :key="i" class="header-item">{{ i }}</div>
+          <div v-for="i in name" :key="i" class="header-item">
+            {{ i }}
+          </div>
         </div>
       </template>
       <template #default>
@@ -78,12 +80,18 @@ const renderStars = (ind: number, difficulty: number) => {
               {{ item.type }}
             </span>
           </div>
-          <div class="data-item title">{{ item.title }}</div>
-          <div class="data-item time">{{ item.publishTime }}</div>
+          <div class="data-item title">
+            {{ item.title }}
+          </div>
+          <div class="data-item time">
+            {{ item.publishTime }}
+          </div>
           <div class="data-item">
             <Star v-for="i in 5" :stroke="renderStars(i, item.difficulty)" />
           </div>
-          <div class="data-item count">{{ item.useCount }}</div>
+          <div class="data-item count">
+            {{ item.useCount }}
+          </div>
           <div class="data-item actions">
             <span class="action-btn edit-btn">编辑</span>
             <span class="action-btn delete-btn">删除</span>
@@ -94,6 +102,7 @@ const renderStars = (ind: number, difficulty: number) => {
   </div>
   <BigButton text="新建题目" />
 </template>
+
 <style scoped>
 .card-area.filter-options {
   padding: 18px 12px;
@@ -120,7 +129,7 @@ const renderStars = (ind: number, difficulty: number) => {
   .data-row {
     display: grid;
     grid-template-columns: var(--grid-style);
-    border-bottom: 1px solid #EAEAEA;
+    border-bottom: 1px solid #eaeaea;
     min-height: 50px;
     align-items: center;
 
@@ -202,7 +211,7 @@ const renderStars = (ind: number, difficulty: number) => {
     }
 
     &:hover {
-      background-color: #FAFAFA;
+      background-color: #fafafa;
     }
   }
 }

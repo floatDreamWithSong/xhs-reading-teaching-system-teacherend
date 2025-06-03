@@ -1,10 +1,12 @@
-import axios, { type AxiosInstance, type AxiosRequestConfig, type AxiosResponse } from 'axios'
-import { ref, type Ref } from 'vue'
-import * as teacherApis from './teacher'
+import type { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
+import type { Ref } from 'vue'
+import type z from 'zod'
+import axios from 'axios'
+import { ref } from 'vue'
+import * as bankApis from './bank'
 import * as classApis from './class'
 import * as homeworkApis from './homework'
-import * as bankApis from './bank'
-import type z from 'zod'
+import * as teacherApis from './teacher'
 
 // 业务请求封装
 export const api = {
@@ -37,9 +39,8 @@ interface RequestState<T> {
   error: Ref<string | null>
 }
 
-
 // 创建axios实例
-const createAxiosInstance = (): AxiosInstance => {
+function createAxiosInstance(): AxiosInstance {
   const instance = axios.create({
     baseURL: BASE_URL,
     timeout: DEFAULT_TIMEOUT,
@@ -112,7 +113,8 @@ const createAxiosInstance = (): AxiosInstance => {
           default:
             errorMessage = `请求失败 (${status})`
         }
-      } else if (error.request) {
+      }
+      else if (error.request) {
         errorMessage = '网络连接失败'
       }
 
@@ -127,12 +129,18 @@ const createAxiosInstance = (): AxiosInstance => {
 const httpClient = createAxiosInstance()
 
 // 基础请求方法
-export const request = async <T extends z.ZodSchema>(config: AxiosRequestConfig & { responseValidator?: T, dataValidator: z.ZodSchema }): Promise<z.infer<T>> => {
+export async function request<T extends z.ZodSchema>(config: AxiosRequestConfig & { responseValidator?: T, dataValidator?: z.ZodSchema, paramsValidator?: z.ZodSchema }): Promise<z.infer<T>> {
   try {
     if (config.dataValidator) {
       const result = config.dataValidator.safeParse(config.data)
       if (!result.success) {
-        throw new Error(`请求${config.url}请求数据格式错误:${result.error.message}`)
+        throw new Error(`请求${config.url}的body数据格式错误:${result.error.message}`)
+      }
+    }
+    if (config.paramsValidator) {
+      const result = config.paramsValidator.safeParse(config.params)
+      if (!result.success) {
+        throw new Error(`请求${config.url}的params数据格式错误:${result.error.message}`)
       }
     }
     const response = await httpClient.request<ApiResponse<z.infer<T>>>(config)
@@ -141,26 +149,24 @@ export const request = async <T extends z.ZodSchema>(config: AxiosRequestConfig 
     }
     const result = config.responseValidator.safeParse(response.data.data)
     if (!result.success) {
-      throw new Error(`请求${config.url}响应数据格式错误:${result.error.message}`)
+      throw new Error(`请求${config.url}的响应数据格式错误:${result.error.message}`)
     }
     return result
-  } catch (error) {
+  }
+  catch (error) {
     throw error instanceof Error ? error : new Error('未知错误')
   }
 }
 
 // 响应Hook封装 - 方便请求状态管理
-export const useRequest = <T = any>(
-  requestFn: () => Promise<T>,
-  options: {
-    immediate?: boolean
-    onSuccess?: (data: T) => void
-    onError?: (error: Error) => void
-  } = {},
-): RequestState<T> & {
+export function useRequest<T = any>(requestFn: () => Promise<T>, options: {
+  immediate?: boolean
+  onSuccess?: (data: T) => void
+  onError?: (error: Error) => void
+} = {}): RequestState<T> & {
   execute: () => Promise<void>
   refresh: () => Promise<void>
-} => {
+} {
   const loading = ref(false)
   const data = ref<T | null>(null) as Ref<T | null>
   const error = ref<string | null>(null)
@@ -174,11 +180,13 @@ export const useRequest = <T = any>(
       data.value = result
 
       options.onSuccess?.(result)
-    } catch (err) {
+    }
+    catch (err) {
       const errorMessage = err instanceof Error ? err.message : '请求失败'
       error.value = errorMessage
       options.onError?.(err instanceof Error ? err : new Error(errorMessage))
-    } finally {
+    }
+    finally {
       loading.value = false
     }
   }
@@ -198,16 +206,13 @@ export const useRequest = <T = any>(
 }
 
 // 分页Hook封装
-export const usePagination = <T = any>(
-  requestFn: (page: number, pageSize: number, ...args: any[]) => Promise<{
-    total: number
-    list: T[]
-  }>,
-  options: {
-    pageSize?: number
-    immediate?: boolean
-  } = {},
-) => {
+export function usePagination<T = any>(requestFn: (page: number, pageSize: number, ...args: any[]) => Promise<{
+  total: number
+  list: T[]
+}>, options: {
+  pageSize?: number
+  immediate?: boolean
+} = {}) {
   const loading = ref(false)
   const data = ref<T[]>([])
   const error = ref<string | null>(null)
@@ -223,10 +228,12 @@ export const usePagination = <T = any>(
       const result = await requestFn(page.value, pageSize.value, ...args)
       data.value = result.list
       total.value = result.total
-    } catch (err) {
+    }
+    catch (err) {
       const errorMessage = err instanceof Error ? err.message : '请求失败'
       error.value = errorMessage
-    } finally {
+    }
+    finally {
       loading.value = false
     }
   }

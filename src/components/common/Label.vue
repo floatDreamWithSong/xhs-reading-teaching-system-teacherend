@@ -1,6 +1,6 @@
 <script setup lang="ts">
 interface Props {
-  required?: boolean,
+  required?: boolean
   label?: string
 }
 defineProps<Props>()
@@ -9,7 +9,7 @@ defineProps<Props>()
 <template>
   <span class="label">
     <span v-if="$slots.prefix" class="prefix-icon">
-      <slot name="prefix"></slot>
+      <slot name="prefix" />
     </span>
     <span v-if="required" class="required">*</span>
     <span class="label-text">{{ label }}</span>

@@ -1,31 +1,31 @@
 <script setup lang="ts">
-import BigButton from '@/components/common/BigButton.vue';
+import BigButton from '@/components/common/BigButton.vue'
 
 const data = [
   {
     title: '班级总数',
     number: 6,
     desc: '较上月增长20%↑',
-    img: '/total-class-num.png'
+    img: '/total-class-num.png',
   },
   {
     title: '学生总数',
     number: 265,
     desc: '较上月增长15%↑',
-    img: '/total-stu-num.png'
+    img: '/total-stu-num.png',
   },
   {
     title: '作业完成率',
     number: '98%',
     desc: '较上月下降20%↓',
-    img: '/homework-complete-ratio.png'
+    img: '/homework-complete-ratio.png',
   },
   {
     title: '平均成绩',
     number: 89.7,
     desc: '较上月增长20%↑',
-    img: '/avg-score.png'
-  }
+    img: '/avg-score.png',
+  },
 ]
 </script>
 
@@ -35,20 +35,26 @@ const data = [
       数据分析
     </div>
     <div class="card-container">
-      <div class="card-area" v-for="item in data" :key="item.title">
+      <div v-for="item in data" :key="item.title" class="card-area">
         <div class="card-left">
-          <div class="card-title">{{ item.title }}</div>
-          <div class="card-number">{{ item.number }}</div>
-          <div class="card-desc" :class="item.desc.endsWith('↓') ? 'decrease' : ''">{{ item.desc }}</div>
+          <div class="card-title">
+            {{ item.title }}
+          </div>
+          <div class="card-number">
+            {{ item.number }}
+          </div>
+          <div class="card-desc" :class="item.desc.endsWith('↓') ? 'decrease' : ''">
+            {{ item.desc }}
+          </div>
         </div>
         <div class="card-right">
-          <img :src="item.img" alt="" />
+          <img :src="item.img" alt="">
         </div>
       </div>
     </div>
     <div class="width-w">
       <div class="stat-graph-container">
-        <div class="stat-graph-item card-area" v-for="_ in 4">
+        <div v-for="_ in 4" class="stat-graph-item card-area">
           <div class="stat-title">
             统计图
           </div>
@@ -58,6 +64,7 @@ const data = [
     </div>
   </div>
 </template>
+
 <style scoped>
 .data-wrapper {
   width: 100%;
@@ -90,7 +97,7 @@ const data = [
         font-weight: 500;
         font-size: 28px;
         letter-spacing: -0.06em;
-        background: linear-gradient(360deg, #2447F9 26.92%, #8FA2FF 100%);
+        background: linear-gradient(360deg, #2447f9 26.92%, #8fa2ff 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -104,7 +111,7 @@ const data = [
       }
 
       .card-desc.decrease {
-        --color: #DB0000;
+        --color: #db0000;
       }
     }
 
@@ -118,7 +125,7 @@ const data = [
   }
 }
 
-.width-w{
+.width-w {
   width: 100%;
   min-width: fit-content;
 }
@@ -132,7 +139,9 @@ const data = [
 
   .stat-graph-item {
     --graph-padding: 17px;
-    min-width: calc(var(--data-card-width) * 2 + var(--data-card-padding) * 4 + var(--data-card-gap) - var(--graph-padding)*2);
+    min-width: calc(
+      var(--data-card-width) * 2 + var(--data-card-padding) * 4 + var(--data-card-gap) - var(--graph-padding) * 2
+    );
     padding: var(--graph-padding);
     height: fit-content;
 
