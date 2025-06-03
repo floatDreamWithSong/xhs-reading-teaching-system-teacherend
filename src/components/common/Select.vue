@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import { computed, ref } from 'vue'
 import { Down } from '../icons'
 import Label from './Label.vue'
-import { ref, computed } from 'vue'
 
 interface Option {
   value: string | number
@@ -26,7 +26,7 @@ const props = withDefaults(defineProps<Props>(), {
   placeholder: '请选择',
   options: () => [],
   disabled: false,
-  required: false
+  required: false,
 })
 
 const emit = defineEmits<Emits>()
@@ -44,21 +44,21 @@ const displayText = computed(() => {
 })
 
 // 切换下拉状态
-const toggleDropdown = () => {
+function toggleDropdown() {
   if (!props.disabled) {
     isOpen.value = !isOpen.value
   }
 }
 
 // 选择选项
-const selectOption = (option: Option) => {
+function selectOption(option: Option) {
   emit('update:modelValue', option.value)
   emit('change', option.value)
   isOpen.value = false
 }
 
 // 点击外部关闭下拉
-const handleClickOutside = (event: Event) => {
+function handleClickOutside(event: Event) {
   if (selectRef.value && !selectRef.value.contains(event.target as Node)) {
     isOpen.value = false
   }
@@ -75,7 +75,6 @@ if (typeof window !== 'undefined') {
     <Label v-if="label" :label="label" :required="required" />
 
     <div ref="selectRef" class="select-wrapper" :class="{ 'is-open': isOpen, 'is-disabled': disabled }">
-
       <div class="select-trigger" @click="toggleDropdown">
         <span class="select-text" :class="{ 'is-placeholder': !modelValue }">
           {{ displayText }}
@@ -85,8 +84,10 @@ if (typeof window !== 'undefined') {
 
       <transition name="dropdown">
         <div v-if="isOpen" class="select-dropdown">
-          <div v-for="option in options" :key="option.value" class="select-option"
-            :class="{ 'is-selected': option.value === modelValue }" @click="selectOption(option)">
+          <div
+            v-for="option in options" :key="option.value" class="select-option"
+            :class="{ 'is-selected': option.value === modelValue }" @click="selectOption(option)"
+          >
             {{ option.label }}
           </div>
         </div>
@@ -146,13 +147,13 @@ if (typeof window !== 'undefined') {
 }
 
 .select-wrapper:hover:not(.is-disabled) .select-trigger {
-  background: var(--form-item-linear-gradient)
+  background: var(--form-item-linear-gradient);
 }
 
 .select-wrapper.is-open .select-trigger {
   background:
     linear-gradient(#fff, #fff) padding-box,
-    linear-gradient(to left, #4299e1 0%, #7A91FE 100%) border-box;
+    linear-gradient(to left, #4299e1 0%, #7a91fe 100%) border-box;
   box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
 }
 
@@ -174,7 +175,9 @@ if (typeof window !== 'undefined') {
   background: #fff;
   border: 1px solid #e2e8f0;
   border-radius: 7px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
   max-height: 200px;
   overflow-y: auto;
 }

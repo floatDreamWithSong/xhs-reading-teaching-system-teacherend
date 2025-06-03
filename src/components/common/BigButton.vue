@@ -9,17 +9,19 @@ interface Emits {
 defineProps<Props>()
 
 const emit = defineEmits<Emits>()
-const handleClick = () => {
+function handleClick() {
   emit('click')
 }
 </script>
+
 <template>
   <div class="button-container">
-    <button @click="handleClick" class="button">
+    <button class="button" @click="handleClick">
       {{ text }}
     </button>
   </div>
 </template>
+
 <style scoped>
 .button-container {
   width: 100%;

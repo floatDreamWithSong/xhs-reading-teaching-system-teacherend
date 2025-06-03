@@ -21,7 +21,7 @@ const emit = defineEmits<{
   viewDetails: [id: string]
 }>()
 
-const handleViewDetails = (id: string) => {
+function handleViewDetails(id: string) {
   emit('viewDetails', id)
 }
 
@@ -33,26 +33,26 @@ const numberItemList = computed(() => {
     {
       name: '人数',
       value: props.homework.totalStudents,
-      color: primaryColor
+      color: primaryColor,
     },
     {
       name: '已完成',
       value: props.homework.completedStudents,
-      color: primaryColor
+      color: primaryColor,
     },
     {
       name: '未完成',
       value: props.homework.uncompletedStudents,
-      color: props.homework.uncompletedStudents > 0 ? dangerColor : infoColor
-    }
+      color: props.homework.uncompletedStudents > 0 ? dangerColor : infoColor,
+    },
   ]
 })
 
 const statusClass = computed(() => {
   const statusMap = {
-    '进行中': 'ongoing',
-    '已结束': 'ended',
-    '未开始': 'not-started'
+    进行中: 'ongoing',
+    已结束: 'ended',
+    未开始: 'not-started',
   }
   return statusMap[props.homework.status]
 })
@@ -70,16 +70,22 @@ const statusClass = computed(() => {
       <div class="homework-time-info">
         <span>发布时间：{{ homework.publishTime }}</span>
         <span>截止时间：{{ homework.deadline }}</span>
-        <span :class="['status', statusClass]">{{ homework.status }}</span>
+        <span class="status" :class="[statusClass]">{{ homework.status }}</span>
       </div>
     </div>
     <div class="mid-container">
-      <div class="number-item" v-for="(item, index) in numberItemList" :key="index">
-        <div class="item-name">{{ item.name }}</div>
-        <div class="item-number" :style="{
-          background: item.color,
-          backgroundClip: 'text'
-        }">{{ item.value }}</div>
+      <div v-for="(item, index) in numberItemList" :key="index" class="number-item">
+        <div class="item-name">
+          {{ item.name }}
+        </div>
+        <div
+          class="item-number" :style="{
+            background: item.color,
+            backgroundClip: 'text',
+          }"
+        >
+          {{ item.value }}
+        </div>
       </div>
     </div>
     <div class="right-container">
@@ -135,17 +141,16 @@ const statusClass = computed(() => {
       align-items: center;
 
       .status {
-
         &.ongoing {
-          color: #52C41A;
+          color: #52c41a;
         }
 
         &.ended {
-          color: #8C8C8C;
+          color: #8c8c8c;
         }
 
         &.not-started {
-          color: #1890FF;
+          color: #1890ff;
         }
       }
     }
@@ -200,8 +205,8 @@ const statusClass = computed(() => {
 
   .item-number {
     --text-background-primary: linear-gradient(360deg, var(--primary-color) 26.92%, var(--primary-color-200) 100%);
-    --text-background-danger: linear-gradient(360deg, #DB0000 26.92%, #F43636 100%);
-    --text-background-info: linear-gradient(360deg, #A7A7A7 26.92%, #DCDCDC 100%);
+    --text-background-danger: linear-gradient(360deg, #db0000 26.92%, #f43636 100%);
+    --text-background-info: linear-gradient(360deg, #a7a7a7 26.92%, #dcdcdc 100%);
     font-weight: 500;
     font-size: 30px;
     line-height: 43px;

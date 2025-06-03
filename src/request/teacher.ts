@@ -1,13 +1,13 @@
+import type z from 'zod'
 import { request } from '.'
+import { getTeacherInfoRequestSchema, getTeacherInfoResponseSchema } from '../validators'
 
-export const getTeacherInfo = (params: {}) =>
-  request<{
-    teacher_id: string
-    name: string
-    title: string
-    avatar: string
-  }>({
+export function getTeacherInfo(params: z.infer<typeof getTeacherInfoRequestSchema>) {
+  return request({
     method: 'POST',
     url: '/reading/get-teacher',
     data: params,
+    dataValidator: getTeacherInfoRequestSchema,
+    responseValidator: getTeacherInfoResponseSchema,
   })
+}

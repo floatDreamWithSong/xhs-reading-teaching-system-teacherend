@@ -1,11 +1,13 @@
 <script setup lang="ts">
 </script>
+
 <template>
   <svg width="19" height="20" viewBox="0 0 19 20" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path
       d="M8.44167 3.81504H4.1164C2.68313 3.81504 1.52124 4.9769 1.52124 6.41012V15.0605C1.52124 16.4937 2.68313 17.6555 4.1164 17.6555H12.7669C14.2002 17.6555 15.3621 16.4937 15.3621 15.0605L15.3621 10.7353M5.84651 13.3303L8.99385 12.6962C9.16093 12.6625 9.31435 12.5802 9.43483 12.4597L16.4805 5.41042C16.8183 5.07245 16.818 4.5246 16.4799 4.18691L14.9874 2.69613C14.6495 2.35858 14.1019 2.35881 13.7642 2.69664L6.71788 9.74664C6.59762 9.86696 6.51552 10.0201 6.48182 10.1868L5.84651 13.3303Z"
-      stroke="var(--primary-color)" stroke-width="1.52124" stroke-linecap="round" stroke-linejoin="round" />
+      stroke="var(--primary-color)" stroke-width="1.52124" stroke-linecap="round" stroke-linejoin="round"
+    />
   </svg>
-
 </template>
+
 <style scoped></style>

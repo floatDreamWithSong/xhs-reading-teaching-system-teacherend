@@ -1,12 +1,13 @@
 <script setup lang="ts">
-import TextInput from '@/components/common/TextInput.vue'
+import { computed, ref } from 'vue'
+import { useRouter } from 'vue-router'
+import BigButton from '@/components/common/BigButton.vue'
 import Label from '@/components/common/Label.vue'
 import Select from '@/components/common/Select.vue'
+import TextInput from '@/components/common/TextInput.vue'
 import YesNoRadio from '@/components/common/YesNoRadio.vue'
-import { ref, computed } from 'vue'
-import { useRouter } from 'vue-router'
 import { AddPeople, Phone } from '@/components/icons'
-import BigButton from '@/components/common/BigButton.vue'
+
 const router = useRouter()
 
 // 表单数据
@@ -29,16 +30,17 @@ const gradeOptions = [
 
 // 名称预览
 const classNamePreview = computed(() => {
-  if (!grade.value || !className.value) return ''
+  if (!grade.value || !className.value)
+    return ''
   const gradeLabel = gradeOptions.find(option => option.value === grade.value)?.label || ''
   return `${gradeLabel}(${className.value})班 (${schoolName.value})`
 })
 
-const handleBack = () => {
+function handleBack() {
   router.back()
 }
 
-const handleCreateClass = () => {
+function handleCreateClass() {
   console.log('创建班级:', {
     schoolName: schoolName.value,
     schoolStage: schoolStage.value,
@@ -46,7 +48,7 @@ const handleCreateClass = () => {
     studentCount: studentCount.value,
     className: className.value,
     enableMiniProgram: enableMiniProgram.value,
-    enableAssistant: enableAssistant.value
+    enableAssistant: enableAssistant.value,
   })
 }
 </script>
@@ -54,58 +56,63 @@ const handleCreateClass = () => {
 <template>
   <div class="create-class-container">
     <div class="back-button" @click="handleBack">
-      < 返回 </div>
-        <div class="class-info-section card-area">
-          <h3 class="form-title">班级信息登记</h3>
-
-          <div class="form-item">
-            <TextInput label="学校:" v-model="schoolName" class="form-input" />
-          </div>
-          <div class="form-item">
-            <TextInput v-model="schoolStage" label="学段:" class="form-input" />
-          </div>
-
-          <Label class="notice-label" label="所创建班级对应学段及学段信息须与教师个人信息一致" required />
-
-          <div class="form-item">
-            <Select label="年级:" required :options="gradeOptions" />
-          </div>
-          <div class="form-item">
-            <TextInput label="人数:" required v-model="studentCount" placeholder="请输入人班级人数" class="form-input" />
-          </div>
-
-          <div class="form-item">
-            <TextInput label="名称:" required v-model="className" type="text" placeholder="请输入班级名称" class="form-input" />
-          </div>
-
-          <div class="name-preview">
-            <span class="name-preview-label">名称预览:</span>
-            <span class="preview-text"> <!-- {{ classNamePreview }} --> 高一(1)班（小花狮实验学校）
-            </span>
-          </div>
-        </div>
-
-        <!-- 附加服务选择 -->
-        <div class="service-section card-area">
-          <h3 class="service-title">附加服务选择</h3>
-          <YesNoRadio label="开通班级小程序:" v-model="enableMiniProgram">
-            <template #prefix>
-              <Phone />
-            </template>
-          </YesNoRadio>
-
-          <YesNoRadio label="添加小花狮助教:" v-model="enableAssistant">
-            <template #prefix>
-              <AddPeople />
-            </template>
-          </YesNoRadio>
-
-          <Label class="notice-label" label="小花狮助教为系统管理员角色，可以帮助您更好地进行班级管理" required />
-        </div>
-
-        <!-- 创建按钮 -->
-        <BigButton @click="handleCreateClass" text="创建班级" />
+      < 返回
     </div>
+    <div class="class-info-section card-area">
+      <h3 class="form-title">
+        班级信息登记
+      </h3>
+
+      <div class="form-item">
+        <TextInput v-model="schoolName" label="学校:" class="form-input" />
+      </div>
+      <div class="form-item">
+        <TextInput v-model="schoolStage" label="学段:" class="form-input" />
+      </div>
+
+      <Label class="notice-label" label="所创建班级对应学段及学段信息须与教师个人信息一致" required />
+
+      <div class="form-item">
+        <Select label="年级:" required :options="gradeOptions" />
+      </div>
+      <div class="form-item">
+        <TextInput v-model="studentCount" label="人数:" required placeholder="请输入人班级人数" class="form-input" />
+      </div>
+
+      <div class="form-item">
+        <TextInput v-model="className" label="名称:" required type="text" placeholder="请输入班级名称" class="form-input" />
+      </div>
+
+      <div class="name-preview">
+        <span class="name-preview-label">名称预览:</span>
+        <span class="preview-text"> <!-- {{ classNamePreview }} --> 高一(1)班（小花狮实验学校）
+        </span>
+      </div>
+    </div>
+
+    <!-- 附加服务选择 -->
+    <div class="service-section card-area">
+      <h3 class="service-title">
+        附加服务选择
+      </h3>
+      <YesNoRadio v-model="enableMiniProgram" label="开通班级小程序:">
+        <template #prefix>
+          <Phone />
+        </template>
+      </YesNoRadio>
+
+      <YesNoRadio v-model="enableAssistant" label="添加小花狮助教:">
+        <template #prefix>
+          <AddPeople />
+        </template>
+      </YesNoRadio>
+
+      <Label class="notice-label" label="小花狮助教为系统管理员角色，可以帮助您更好地进行班级管理" required />
+    </div>
+
+    <!-- 创建按钮 -->
+    <BigButton text="创建班级" @click="handleCreateClass" />
+  </div>
 </template>
 
 <style scoped>
@@ -114,7 +121,6 @@ const handleCreateClass = () => {
 }
 
 .create-class-container {
-
   .back-button {
     width: fit-content;
     margin-bottom: 15px;
@@ -145,12 +151,12 @@ const handleCreateClass = () => {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-areas:
-    "title title"
-    "school stage"
-    "notice notice"
-    "grade student-count"
-    "class-name class-name"
-    "preview preview";
+    'title title'
+    'school stage'
+    'notice notice'
+    'grade student-count'
+    'class-name class-name'
+    'preview preview';
   gap: 16px;
   align-items: start;
 }
@@ -184,7 +190,6 @@ const handleCreateClass = () => {
 .form-item:nth-child(7) {
   grid-area: class-name;
 }
-
 
 .name-preview {
   grid-area: preview;

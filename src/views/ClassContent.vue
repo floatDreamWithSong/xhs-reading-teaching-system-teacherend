@@ -1,13 +1,12 @@
 <script setup lang="ts">
-import BigButton from '@/components/common/BigButton.vue';
-import PageController from '@/components/common/PageController.vue';
-import Select from '@/components/common/Select.vue';
-import TextInput from '@/components/common/TextInput.vue';
-import { Delete, Edit, Search, Student } from '@/components/icons';
-import router from '@/router';
+import BigButton from '@/components/common/BigButton.vue'
+import PageController from '@/components/common/PageController.vue'
+import Select from '@/components/common/Select.vue'
+import TextInput from '@/components/common/TextInput.vue'
+import { Delete, Edit, Search, Student } from '@/components/icons'
+import router from '@/router'
 
-
-const handleCreateClass = () => {
+function handleCreateClass() {
   router.push('/class/create-class')
 }
 </script>
@@ -55,6 +54,7 @@ const handleCreateClass = () => {
   </div>
   <BigButton text="新增班级" @click="handleCreateClass" />
 </template>
+
 <style scoped>
 .card-area.filter-options {
   padding: 18px 12px;
@@ -92,7 +92,12 @@ const handleCreateClass = () => {
           width: 100%;
           height: 100%;
           bottom: 0;
-          background: linear-gradient(to right, rgba(40, 74, 249, 0.75) 0%, rgba(81, 110, 252, 0.8) 46.15%, rgba(122, 145, 254, 0.6) 92.31%);
+          background: linear-gradient(
+            to right,
+            rgba(40, 74, 249, 0.75) 0%,
+            rgba(81, 110, 252, 0.8) 46.15%,
+            rgba(122, 145, 254, 0.6) 92.31%
+          );
           display: flex;
           justify-content: center;
           align-items: center;
@@ -100,12 +105,12 @@ const handleCreateClass = () => {
 
           .school-info {
             font-size: 10px;
-            color: #FFFFFF;
+            color: #ffffff;
           }
 
           .class-info {
             font-size: 20px;
-            color: #FFFFFF;
+            color: #ffffff;
             text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
           }
         }
@@ -126,7 +131,7 @@ const handleCreateClass = () => {
             letter-spacing: -0.06em;
             font-weight: 700;
             font-size: 15px;
-            background: linear-gradient(360deg, #2447F9 41.62%, #7A91FE 71.67%);
+            background: linear-gradient(360deg, #2447f9 41.62%, #7a91fe 71.67%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;

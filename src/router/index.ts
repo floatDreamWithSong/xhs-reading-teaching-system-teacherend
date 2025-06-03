@@ -27,11 +27,13 @@ const routes: RouteRecordRaw[] = [
         path: '',
         name: 'HomeContent',
         component: () => import('../views/ClassContent.vue'),
-      }, {
+      },
+      {
         path: 'create-class',
         name: 'CreateClass',
         component: () => import('../views/CreateClassPage.vue'),
-      }]
+      },
+    ],
   },
   {
     path: '/data',

@@ -25,12 +25,12 @@ const props = withDefaults(defineProps<Props>(), {
   options: () => [],
   disabled: false,
   required: false,
-  direction: 'horizontal'
+  direction: 'horizontal',
 })
 
 const emit = defineEmits<Emits>()
 
-const handleChange = (value: string | number | boolean) => {
+function handleChange(value: string | number | boolean) {
   if (!props.disabled) {
     emit('update:modelValue', value)
     emit('change', value)
@@ -42,18 +42,18 @@ const handleChange = (value: string | number | boolean) => {
   <div class="radio-group-container">
     <Label v-if="label" :label="label" :required="required">
       <template #prefix>
-        <slot name="prefix"></slot>
+        <slot name="prefix" />
       </template>
     </Label>
-    
+
     <div class="radio-options" :class="`direction-${direction}`">
-      <label 
-        v-for="option in options" 
+      <label
+        v-for="option in options"
         :key="String(option.value)"
-        class="radio-option" 
-        :class="{ 
+        class="radio-option"
+        :class="{
           'is-disabled': disabled || option.disabled,
-          'is-checked': modelValue === option.value 
+          'is-checked': modelValue === option.value,
         }"
       >
         <input
@@ -61,10 +61,10 @@ const handleChange = (value: string | number | boolean) => {
           :value="option.value"
           :checked="modelValue === option.value"
           :disabled="disabled || option.disabled"
-          @change="handleChange(option.value)"
           class="radio-input"
-        />
-        <span class="radio-custom"></span>
+          @change="handleChange(option.value)"
+        >
+        <span class="radio-custom" />
         <span class="radio-text">{{ option.label }}</span>
       </label>
     </div>
@@ -174,4 +174,4 @@ const handleChange = (value: string | number | boolean) => {
 .direction-vertical .radio-text {
   flex: 1;
 }
-</style> 
+</style>

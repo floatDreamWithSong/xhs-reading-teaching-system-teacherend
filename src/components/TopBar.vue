@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Avatar, Xhs, Down } from './icons'
+import { Avatar, Down, Xhs } from './icons'
 </script>
 
 <template>
@@ -78,13 +78,15 @@ import { Avatar, Xhs, Down } from './icons'
   border: none;
   padding: 6px 1.5rem;
   border-radius: 100px;
-  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.05), inset 0px 4px 4px rgba(255, 255, 255, 0.5);
+  box-shadow:
+    0px 2px 3px rgba(0, 0, 0, 0.05),
+    inset 0px 4px 4px rgba(255, 255, 255, 0.5);
   cursor: pointer;
   font-size: 14px;
 
   .topbar-language-button-text {
     font-weight: 500;
-    background: linear-gradient(360deg, #2447F9 18.27%, #7289FE 100%);
+    background: linear-gradient(360deg, #2447f9 18.27%, #7289fe 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;

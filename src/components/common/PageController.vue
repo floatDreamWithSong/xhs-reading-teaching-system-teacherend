@@ -1,18 +1,18 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed } from 'vue'
 
 interface Props {
-  page: number,
-  total: number,
-  pageSize: number,
+  page: number
+  total: number
+  pageSize: number
 }
 const props = defineProps<Props>()
 
+const emit = defineEmits<Emits>()
 interface Emits {
   (e: 'update:page', value: number): void
 }
-const emit = defineEmits<Emits>()
-const handlePageChange = (value: number) => {
+function handlePageChange(value: number) {
   if (!isValidPage(value)) {
     return
   }
@@ -28,19 +28,20 @@ const pages = computed(() => {
     page.push(props.page + 1)
   }
   if (page.length === 3) {
-    return page;
+    return page
   }
   if (isValidPage(props.page - 2)) {
     page.unshift(props.page - 2)
-    return page;
+    return page
   }
   if (isValidPage(props.page + 2)) {
     page.push(props.page + 2)
-    return page;
+    return page
   }
-  return page;
+  return page
 })
 </script>
+
 <template>
   <div class="pagination-controller">
     <div class="pre-page" @click="handlePageChange(page - 1)">
@@ -49,8 +50,12 @@ const pages = computed(() => {
       </svg>
     </div>
     <div v-if="total" class="page-wrapper">
-      <div @click="handlePageChange(i)" v-for="i in pages" :key="i" class="page-number"
-        :class="{ 'page-active': i === page }">{{ i }}</div>
+      <div
+        v-for="i in pages" :key="i" class="page-number" :class="{ 'page-active': i === page }"
+        @click="handlePageChange(i)"
+      >
+        {{ i }}
+      </div>
     </div>
     <div class="next-page" @click="handlePageChange(page + 1)">
       <svg width="10" height="15" viewBox="0 0 10 15" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -59,6 +64,7 @@ const pages = computed(() => {
     </div>
   </div>
 </template>
+
 <style scoped>
 .pagination-controller {
   margin-top: 20px;
