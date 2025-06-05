@@ -16,6 +16,8 @@ const menuItems = [
 function isActive(path: string) {
   if (path === '/class') {
     return route.matched.some(record => record.path === '/class')
+  } else if (path === '/bank') {
+    return route.matched.some(record => record.path === '/bank')
   }
   return route.path === path
 }
@@ -30,10 +32,8 @@ function handleLogout() {
 <template>
   <div class="sidebar-container">
     <div class="sidebar-list-container">
-      <router-link
-        v-for="item in menuItems" :key="item.name" :to="item.path" class="sidebar-list-item"
-        :class="{ 'selected-item': isActive(item.path) }"
-      >
+      <router-link v-for="item in menuItems" :key="item.name" :to="item.path" class="sidebar-list-item"
+        :class="{ 'selected-item': isActive(item.path) }">
         <component :is="item.icon" />
         <span>{{ item.label }}</span>
       </router-link>
