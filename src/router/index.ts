@@ -11,6 +11,17 @@ const routes: RouteRecordRaw[] = [
     path: '/bank',
     name: 'Bank',
     component: () => import('../views/BankPage.vue'),
+    children:[
+      {
+        path:'',
+        name:'inclass',
+        component: ()=>import('../views/bank/InClass.vue')
+      },{
+        path:'outofclass',
+        name: 'outofclass',
+        component: ()=>import('../views/bank/OutClass.vue')
+      }
+    ]
   },
   {
     path: '/homework',

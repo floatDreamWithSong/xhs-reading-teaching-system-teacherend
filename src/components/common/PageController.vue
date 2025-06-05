@@ -12,13 +12,13 @@ const emit = defineEmits<Emits>()
 interface Emits {
   (e: 'update:page', value: number): void
 }
+const isValidPage = (i: number) => i > 0 && i <= Math.ceil(props.total / props.pageSize)
 function handlePageChange(value: number) {
   if (!isValidPage(value)) {
     return
   }
   emit('update:page', value)
 }
-const isValidPage = (i: number) => i > 0 && i <= Math.ceil(props.total / props.pageSize)
 const pages = computed(() => {
   const page = [props.page]
   if (isValidPage(props.page - 1)) {

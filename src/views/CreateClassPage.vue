@@ -56,7 +56,7 @@ function handleCreateClass() {
 <template>
   <div class="create-class-container">
     <div class="back-button" @click="handleBack">
-      < 返回
+      &lt; 返回
     </div>
     <div class="class-info-section card-area">
       <h3 class="form-title">

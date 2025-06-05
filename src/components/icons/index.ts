@@ -1,17 +1,37 @@
-export * from './AddPeople.vue'
-export * from './Avatar.vue'
-export * from './Data.vue'
-export * from './Delete.vue'
-export * from './Down.vue'
-export * from './Edit.vue'
-export * from './Exit.vue'
-export * from './Folder.vue'
-export * from './Home.vue'
-export * from './Homework.vue'
-export * from './People.vue'
-export * from './Phone.vue'
-export * from './Search.vue'
-export * from './Setting.vue'
-export * from './Star.vue'
-export * from './Student.vue'
-export * from './Xhs.vue'
+import AddPeople from './AddPeople.vue'
+import Avatar from './Avatar.vue'
+import Data from './Data.vue'
+import Delete from './Delete.vue'
+import Down from './Down.vue'
+import Edit from './Edit.vue'
+import Exit from './Exit.vue'
+import Folder from './Folder.vue'
+import Home from './Home.vue'
+import Homework from './Homework.vue'
+import People from './People.vue'
+import Phone from './Phone.vue'
+import Search from './Search.vue'
+import Setting from './Setting.vue'
+import Star from './Star.vue'
+import Student from './Student.vue'
+import Xhs from './Xhs.vue'
+
+export {
+  AddPeople,
+  Avatar,
+  Data,
+  Delete,
+  Down,
+  Edit,
+  Exit,
+  Folder,
+  Home,
+  Homework,
+  People,
+  Phone,
+  Search,
+  Setting,
+  Star,
+  Student,
+  Xhs,
+}
