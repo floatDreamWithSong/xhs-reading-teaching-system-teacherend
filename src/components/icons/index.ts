@@ -15,6 +15,7 @@ import Setting from './Setting.vue'
 import Star from './Star.vue'
 import Student from './Student.vue'
 import Xhs from './Xhs.vue'
+import Plus from './Plus.vue'
 
 export {
   AddPeople,
@@ -34,4 +35,5 @@ export {
   Star,
   Student,
   Xhs,
+  Plus
 }

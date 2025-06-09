@@ -98,5 +98,5 @@ function renderStars(ind: number, difficulty: number) {
   </div>
   <BigButton text="新建题目" />
 </template>
-<style src="../../styles/bank.css" scoped>
+<style src="../../../styles/bank-manage.css" scoped>
 </style>

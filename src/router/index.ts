@@ -11,15 +11,36 @@ const routes: RouteRecordRaw[] = [
     path: '/bank',
     name: 'Bank',
     component: () => import('../views/BankPage.vue'),
-    children:[
+    children: [
       {
-        path:'',
-        name:'inclass',
-        component: ()=>import('../views/bank/InClass.vue')
-      },{
-        path:'outofclass',
-        name: 'outofclass',
-        component: ()=>import('../views/bank/OutClass.vue')
+        path: '',
+        name: 'manage',
+        component: () => import('../views/bank/ManagePage.vue'),
+        children: [{
+          path: '',
+          name: 'inclass',
+          component: () => import('../views/bank/manage/InClass.vue')
+        }, {
+          path: 'outofclass',
+          name: 'outofclass',
+          component: () => import('../views/bank/manage/OutClass.vue')
+        }]
+      }, {
+        // 新建题组
+        path: 'create',
+        name: 'create',
+        component: () => import('../views/bank/CreatePage.vue'),
+        children: [{
+          // 阅读题目
+          path: '',
+          name: 'reading',
+          component: () => import('../views/bank/create/ReadingPage.vue')
+        }, {
+          // 预习题目
+          path: 'preview',
+          name: 'preview',
+          component: () => import('../views/bank/create/PreviewPage.vue')
+        }]
       }
     ]
   },
