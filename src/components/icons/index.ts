@@ -18,6 +18,8 @@ import Xhs from './Xhs.vue'
 import Plus from './Plus.vue'
 import Upload from './Upload.vue'
 import KeyBoard from './KeyBoard.vue'
+import AIWrite from './AIWrite.vue'
+import Eye from './Eye.vue'
 
 export {
   AddPeople,
@@ -39,5 +41,7 @@ export {
   Xhs,
   Plus,
   Upload,
-  KeyBoard
+  KeyBoard,
+  AIWrite,
+  Eye
 }
