@@ -14,8 +14,8 @@ const cardData = [
   },
   {
     imageSrc: '/manage-class.png',
-    text: '班级管理',
-    url: '/class',
+    text: '新建题组',
+    url: '/bank/create',
   },
   {
     imageSrc: '/create-class.png',
@@ -85,7 +85,7 @@ function handleViewHomeworkDetails(id: string) {
       <div class="latest-homework-list-header">
         <span class="latest-homework-list-title">最新作业列表</span>
         <router-link class="latest-homework-list-more" to="/homework">
-          查看更多>
+          查看更多 &gt;
         </router-link>
       </div>
       <div class="latest-homework-list-content">

@@ -1,0 +1,123 @@
+.card-area.filter-options {
+  padding: 18px 12px;
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.card-area.filter-options.out-class{
+  grid-template-columns: repeat(2, 1fr);
+}
+.filter-result {
+  margin-top: 21px;
+  margin-bottom: 58px;
+  --grid-style: 80px 4fr 2.5fr 2.5fr 2fr minmax(90px, 1fr);
+
+  .header {
+    display: grid;
+    grid-template-columns: var(--grid-style);
+
+    .header-item {
+      padding: 10px 8px;
+    }
+  }
+
+  .data-row {
+    display: grid;
+    grid-template-columns: var(--grid-style);
+    border-bottom: 1px solid #eaeaea;
+    min-height: 50px;
+    align-items: center;
+
+    .data-item {
+      padding: 10px 8px;
+      display: flex;
+      align-items: center;
+
+      &.type-tag {
+        .tag {
+          width: 100%;
+          height: 20px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 1000px;
+          font-size: 10px;
+          color: white;
+          font-weight: 500;
+        }
+
+        .reading-tag {
+          background-color: var(--primary-color);
+        }
+
+        .preview-tag {
+          background-color: var(--primary-color-300);
+        }
+      }
+
+      &.title {
+        font-size: 14px;
+        color: #333;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        position: relative;
+
+        &::after {
+          content: '';
+          background-color: #333;
+          width: 20%;
+          height: 100%;
+          position: absolute;
+          right: 0;
+          background: linear-gradient(to right, #ffffff00, #ffffff);
+        }
+      }
+
+      &.time {
+        font-size: 13px;
+        color: #666;
+      }
+
+      &.count {
+        font-size: 14px;
+        color: #333;
+        font-weight: 500;
+      }
+
+      &.actions {
+        display: flex;
+        gap: 15px;
+
+        .action-btn {
+          font-size: 14px;
+          cursor: pointer;
+          transition: all 0.2s;
+
+          &.edit-btn {
+            color: var(--primary-color);
+          }
+
+          &.delete-btn {
+            color: var(--text-color);
+          }
+        }
+      }
+    }
+
+    &:hover {
+      background-color: #fafafa;
+    }
+  }
+}
+
+.create-question-button-container {
+  margin-top: 58px;
+
+  .create-question-button {
+    display: block;
+    margin: auto;
+  }
+}
