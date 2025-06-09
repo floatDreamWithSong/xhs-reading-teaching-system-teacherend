@@ -28,16 +28,17 @@ const subRoute = [{
       {{ i.label }}
     </router-link>
   </div>
-  <router-view>
-
-  </router-view>
+  <keep-alive :include="['ReadingPage', 'PreviewPage']">
+    <router-view />
+  </keep-alive>
 </template>
 <style src="../../styles/bank.css" scoped></style>
 <style scoped>
 .headline {
   position: relative;
   width: 100%;
-  .content-header{
+
+  .content-header {
     display: inline;
   }
 

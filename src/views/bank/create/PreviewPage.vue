@@ -1,4 +1,7 @@
 <script setup lang="ts">
+defineOptions({
+  name: 'PreviewPage'
+})
 </script>
 <template>
   预习
